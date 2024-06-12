@@ -1,0 +1,19 @@
+version: "3"
+services:
+  back:
+    image: python:3.10-slim-buster
+    restart: always
+    working_dir: /app
+    expose:
+      - "800"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - .:/app
+    command: \
+      bash -c "apt-get update &&
+      apt-get install -y curl &&
+      curl -sSL https://install.python-poetry.org | python3 - &&
+      export PATH=/root/.local/bin:$PATH &&
+      poetry update &&
+      poetry run python server.py
