@@ -44,11 +44,6 @@ async def update_vm(request: Request):
     return JSONResponse(upd_vm, 201, request.headers)
 
 
-@app.route('/logout/')
-async def logout(request: Request):
-    pass
-
-
 @app.route('/hardisk/')
 async def info_hard(request: Request):
     result = await VM.join()
