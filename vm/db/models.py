@@ -1,13 +1,15 @@
 import uuid
-
+import os
 from vm.asyncorm import (PoolManager, AsyncModel,
                          Column, ForeignKeyColumn, RelatedColumn)
 import sys
 
+HOST = os.environ.get('POSTGRES_HOST', 'localhost')
+
 manager = PoolManager(
     user='dev',
     password='dev',
-    host='127.0.0.1',
+    host=HOST,
     port='5432',
     database='vm'
 )
